@@ -25,3 +25,10 @@ export interface IWorkspacesDefaultPlugins {
   editor: string;
   plugins: string[];
 }
+
+export interface IServerConfig {
+  defaults: {
+    pvcStrategy: string | undefined;
+  };
+  cheNamespace: string;
+}

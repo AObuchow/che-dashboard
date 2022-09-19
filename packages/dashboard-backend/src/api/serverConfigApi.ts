@@ -15,6 +15,8 @@ import { baseApiPath } from '../constants/config';
 import { getDevWorkspaceClient, getServiceAccountToken } from './helper';
 import { getSchema } from '../services/helpers';
 
+const CHECLUSTER_CR_NAMESPACE = process.env.CHECLUSTER_CR_NAMESPACE as string;
+
 const tags = ['Server Config'];
 
 export function registerServerConfigApi(server: FastifyInstance) {
@@ -28,11 +30,13 @@ export function registerServerConfigApi(server: FastifyInstance) {
     const components = serverConfigApi.getDefaultComponents(cheCustomResource);
     const inactivityTimeout = serverConfigApi.getWorkspaceInactivityTimeout(cheCustomResource);
     const runTimeout = serverConfigApi.getWorkspaceRunTimeout(cheCustomResource);
-    return {
+    const pvcStrategy = serverConfigApi.getPvcStrategy(cheCustomResource);
+    const serverConfig: api.IServerConfig = {
       defaults: {
         editor,
         plugins,
         components,
+        pvcStrategy,
       },
       timeouts: {
         inactivityTimeout,

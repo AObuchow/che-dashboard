@@ -47,12 +47,14 @@ export class FakeStoreBuilder {
           editor: undefined,
           components: [],
           plugins: [],
+          pvcStrategy: '',
         },
         timeouts: {
           inactivityTimeout: -1,
           runTimeout: -1,
         },
-      } as ServerConfig,
+        cheNamespace: '',
+      } as dashboardBackendApi.IServerConfig,
     },
     clusterInfo: {
       isLoading: false,

@@ -88,11 +88,13 @@ const unloadedState: State = {
       editor: undefined,
       components: [],
       plugins: [],
+      pvcStrategy: '',
     },
     timeouts: {
       inactivityTimeout: -1,
       runTimeout: -1,
     },
+    cheNamespace: '',
   },
   error: undefined,
 };
